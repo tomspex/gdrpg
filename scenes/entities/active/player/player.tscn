@@ -718,3 +718,10 @@ tree_root = SubResource("AnimationNodeStateMachine_maww6")
 anim_player = NodePath("../animations")
 parameters/idle/blend_position = Vector2(-0.0832, 0.262222)
 parameters/walk/blend_position = Vector2(-0.00959998, 0.582222)
+
+[node name="interact_detector" type="RayCast2D" parent="."]
+target_position = Vector2(2.08165e-12, 32)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
