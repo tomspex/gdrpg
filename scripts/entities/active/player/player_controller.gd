@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED:float = 300.0;
+const SPEED:float = 75.0;
 
 func _physics_process(delta):
 	var direction:Vector2 = Input.get_vector("left", "right", "up", "down");
