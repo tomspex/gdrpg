@@ -23,10 +23,10 @@ SceneManager="*res://scripts/global/scene_manager.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=1080
+window/size/viewport_width=640
+window/size/viewport_height=480
 window/stretch/mode="viewport"
-window/stretch/scale=4.0
+window/stretch/scale=2.0
 
 [input]
 
@@ -68,4 +68,4 @@ textures/canvas_textures/default_texture_repeat=1
 textures/default_filters/anisotropic_filtering_level=0
 textures/decals/filter=0
 textures/light_projectors/filter=0
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.0383972, 0.0383972, 0.0383972, 1)

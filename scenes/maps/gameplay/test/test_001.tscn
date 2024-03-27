@@ -39,9 +39,9 @@ scene_target = "res://scenes/maps/gameplay/battle/battle_test.tscn"
 
 [node name="door_test_000" parent="entities/still/doors" instance=ExtResource("2_782t7")]
 position = Vector2(-80, -16)
-scale = Vector2(-1, 1)
 scene_target = "res://scenes/maps/gameplay/test/test_000.tscn"
 next_position = Vector2(160, -16)
+direction = 1
 
 [node name="player" parent="." instance=ExtResource("3_rr5i8")]
 

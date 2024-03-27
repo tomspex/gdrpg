@@ -2,9 +2,13 @@ extends Node2D
 
 @export var scene_target:String;
 @export var next_position:Vector2;
+@export var direction:int;
 
-@onready var sprite:Sprite2D = $sprite;
+@onready var sprite = $sprites;
 @onready var dooropen = $audio_holder/dooropen;
+
+func _ready():
+	sprite.frame = direction;
 
 func interact()->void:
 	dooropen.play();

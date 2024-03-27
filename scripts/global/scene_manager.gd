@@ -25,7 +25,6 @@ func switchToScene(src:String, posX:float, posY:float)->void:
 	newSceneProcess(scene_instance);
 
 func newSceneProcess(scene_instance)->void:
-	print("pain");
 	var scene_tools = scene_instance.get_node("scene_tools");
 	
 	var player = scene_instance.get_node("player");
