@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bje3dr3s1bdfp"]
+
+[ext_resource type="Script" path="res://scripts/scenes/game_init/game_init.gd" id="1_bl7aj"]
+
+[node name="game_init" type="Node2D"]
+script = ExtResource("1_bl7aj")
+first_scene = "res://scenes/maps/gameplay/test/test_000.tscn"

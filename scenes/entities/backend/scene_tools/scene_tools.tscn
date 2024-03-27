@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbg440q63mrx6"]
+
+[ext_resource type="Shader" path="res://shaders/transitions/wipe.gdshader" id="1_5wlu2"]
+
+[sub_resource type="GDScript" id="GDScript_bsovd"]
+script/source = "extends Node2D
+#
+#@onready var animator:AnimationPlayer = $animator;
+#func _ready()->void:
+	#animator.play(\"wipe_in\");
+"
+
+[sub_resource type="Animation" id="Animation_1xmhe"]
+resource_name = "wipe_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/wipe:material:shader_parameter/wipePercent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3.5, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transition/wipe:material:shader_parameter/toggleSide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4sy3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/wipe:material:shader_parameter/wipePercent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transition/wipe:material:shader_parameter/toggleSide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4e4t8"]
+resource_name = "wipe_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("transition/wipe:material:shader_parameter/wipePercent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.35, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("transition/wipe:material:shader_parameter/toggleSide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlis5"]
+_data = {
+"RESET": SubResource("Animation_4sy3s"),
+"wipe_in": SubResource("Animation_4e4t8"),
+"wipe_out": SubResource("Animation_1xmhe")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jf6a3"]
+shader = ExtResource("1_5wlu2")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/wipePercent = 0.0
+shader_parameter/toggleSide = false
+
+[node name="scene_tools" type="Node2D" groups=["scene_tools"]]
+script = SubResource("GDScript_bsovd")
+
+[node name="animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qlis5")
+}
+
+[node name="transition" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="wipe" type="ColorRect" parent="transition"]
+material = SubResource("ShaderMaterial_jf6a3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]

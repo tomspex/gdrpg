@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjc5sswee56jl"
-path="res://.godot/imported/indoors.png-b7670f329ae251cc27baa0797fd52140.ctex"
+uid="uid://dodd2iq14v4jg"
+path="res://.godot/imported/bg_0.png-aa5531b86d206bca98d2646dbb81bed1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/maps/indoors/indoors.png"
-dest_files=["res://.godot/imported/indoors.png-b7670f329ae251cc27baa0797fd52140.ctex"]
+source_file="res://sprites/maps/gameplay/battle/backgrounds/bg_0.png"
+dest_files=["res://.godot/imported/bg_0.png-aa5531b86d206bca98d2646dbb81bed1.ctex"]
 
 [params]
 

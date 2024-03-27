@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjhoexkbtb014"]
+[gd_scene load_steps=5 format=3 uid="uid://cjhoexkbtb014"]
 
 [ext_resource type="Script" path="res://scripts/entities/still/door/door_controller.gd" id="1_a2rmr"]
-[ext_resource type="Texture2D" uid="uid://cdpulewgqvjd0" path="res://sprites/maps/indoors/door.png" id="1_ts6y1"]
+[ext_resource type="Texture2D" uid="uid://cdpulewgqvjd0" path="res://sprites/maps/gameplay/indoors/door.png" id="1_ts6y1"]
+[ext_resource type="AudioStream" uid="uid://cwi221knpkbd5" path="res://audio/sfx/placeholder/dooropen.wav" id="3_7xdcn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yncs"]
 size = Vector2(32, 32)
@@ -20,3 +21,8 @@ monitoring = false
 [node name="interact_range" type="CollisionShape2D" parent="area"]
 position = Vector2(-5, 16)
 shape = SubResource("RectangleShape2D_7yncs")
+
+[node name="audio_holder" type="Node2D" parent="."]
+
+[node name="dooropen" type="AudioStreamPlayer" parent="audio_holder"]
+stream = ExtResource("3_7xdcn")

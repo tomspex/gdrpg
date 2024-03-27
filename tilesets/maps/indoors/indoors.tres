@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://breyp6nb3g121"]
 
-[ext_resource type="Texture2D" uid="uid://cjc5sswee56jl" path="res://sprites/maps/indoors/indoors.png" id="1_x1mv3"]
+[ext_resource type="Texture2D" uid="uid://cjc5sswee56jl" path="res://sprites/maps/gameplay/indoors/indoors.png" id="1_x1mv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5orje"]
 resource_name = "indoors"

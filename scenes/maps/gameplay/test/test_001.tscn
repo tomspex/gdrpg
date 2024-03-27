@@ -1,14 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpql7f67mm1l6"]
+[gd_scene load_steps=8 format=3 uid="uid://dpql7f67mm1l6"]
 
+[ext_resource type="PackedScene" uid="uid://cbg440q63mrx6" path="res://scenes/entities/backend/scene_tools/scene_tools.tscn" id="1_4t8uo"]
 [ext_resource type="Shader" path="res://shaders/color/color_bgr.gdshader" id="1_8w1ty"]
 [ext_resource type="TileSet" uid="uid://breyp6nb3g121" path="res://tilesets/maps/indoors/indoors.tres" id="1_ds4k5"]
+[ext_resource type="AudioStream" uid="uid://c2epvsy3eahof" path="res://audio/music/placeholder/ms.mp3" id="1_slt7l"]
 [ext_resource type="PackedScene" uid="uid://cjhoexkbtb014" path="res://scenes/entities/still/door/door.tscn" id="2_782t7"]
 [ext_resource type="PackedScene" uid="uid://bqjcxw81o4oau" path="res://scenes/entities/active/player/player.tscn" id="3_rr5i8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfgiw"]
 shader = ExtResource("1_8w1ty")
 
-[node name="test_000" type="Node2D"]
+[node name="test_001" type="Node2D"]
+
+[node name="scene_tools" parent="." instance=ExtResource("1_4t8uo")]
+
+[node name="audio_holder" type="Node2D" parent="."]
+
+[node name="bg_music" type="AudioStreamPlayer" parent="audio_holder"]
+stream = ExtResource("1_slt7l")
+autoplay = true
 
 [node name="tilemap" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_dfgiw")
@@ -23,9 +33,15 @@ layer_0/tile_data = PackedInt32Array(131074, 65536, 1, 131073, 65536, 1, 131072,
 
 [node name="doors" type="Node2D" parent="entities/still"]
 
-[node name="door_hallway" parent="entities/still/doors" instance=ExtResource("2_782t7")]
+[node name="door_battle" parent="entities/still/doors" instance=ExtResource("2_782t7")]
 position = Vector2(128, -16)
+scene_target = "res://scenes/maps/gameplay/battle/battle_test.tscn"
+
+[node name="door_test_000" parent="entities/still/doors" instance=ExtResource("2_782t7")]
+position = Vector2(-80, -16)
+scale = Vector2(-1, 1)
 scene_target = "res://scenes/maps/gameplay/test/test_000.tscn"
+next_position = Vector2(160, -16)
 
 [node name="player" parent="." instance=ExtResource("3_rr5i8")]
 
