@@ -29,3 +29,4 @@ func _physics_process(delta)->void:
 		animator_audio.play("idle");
 
 	move_and_slide();
+	position = round(position);
