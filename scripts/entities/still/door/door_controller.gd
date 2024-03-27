@@ -1,4 +1,4 @@
-extends Node2D
+extends Node2D;
 
 @export var scene_target:String;
 @export var next_position:Vector2;

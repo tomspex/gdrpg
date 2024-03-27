@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends CharacterBody2D;
 
 @onready var tree:AnimationTree = $tree;
 @onready var animator_audio:AnimationPlayer = $animator_audio;

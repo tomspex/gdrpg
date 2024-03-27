@@ -1,4 +1,4 @@
-extends Node
+extends Node;
 
 @export var ratio:Vector2i;
 @export var min_x:int;

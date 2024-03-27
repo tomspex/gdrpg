@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-CharacterDB="*res://scripts/global/character_database.gd"
 SceneManager="*res://scripts/global/scene_manager.gd"
 
 [display]

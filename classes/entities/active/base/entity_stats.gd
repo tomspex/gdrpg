@@ -1,6 +1,6 @@
-extends Resource
+extends Resource;
 
-class_name CharacterData
+class_name EntityStats;
 
 @export var health:int;
 @export var speed:int;
