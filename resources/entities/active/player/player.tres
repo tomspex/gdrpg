@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ActiveEntity" load_steps=8 format=3 uid="uid://cfcu6j5bedwr4"]
+
+[ext_resource type="Script" path="res://classes/entities/active/active_entity/active_entity.gd" id="1_4ocn3"]
+[ext_resource type="Script" path="res://scripts/entities/active/player/player_controller.gd" id="1_25p7h"]
+[ext_resource type="SpriteFrames" uid="uid://ceaufvo80rkao" path="res://sprite_frames/entities/active/player/player.tres" id="2_l11hq"]
+[ext_resource type="Script" path="res://classes/entities/all/stats/entity_stats.gd" id="2_v31i3"]
+[ext_resource type="AudioStream" uid="uid://c2iagj2vjwp5c" path="res://audio/sfx/placeholder/step.wav" id="4_iodq3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36s62"]
+size = Vector2(3, 11)
+
+[sub_resource type="Resource" id="Resource_7ik4p"]
+script = ExtResource("2_v31i3")
+health = 20
+speed = 20
+courage = 20
+
+[resource]
+script = ExtResource("1_4ocn3")
+display_name = "Player"
+stats = SubResource("Resource_7ik4p")
+walk_speed = 75
+detector_range = 32
+logic = ExtResource("1_25p7h")
+collision_shape = SubResource("RectangleShape2D_36s62")
+collision_transform = Vector2(-0.5, 11)
+sprite_frames = ExtResource("2_l11hq")
+step_sound = ExtResource("4_iodq3")

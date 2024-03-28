@@ -1,24 +1,10 @@
 extends CharacterBody2D;
 
-@onready var tree:AnimationTree = $tree;
-@onready var animator_audio:AnimationPlayer = $animator_audio;
-@onready var detector:RayCast2D = $interact_detector;
-
-const DETECTOR_RANGE:int = 32; 
-const SPEED:float = 75.0;
-
-func _input(event)->void:
-	if(Input.is_action_just_pressed("interact")):
-		if(detector.is_colliding()):
-			var collider = detector.get_collider().get_parent();
-			if(collider.has_method("interact")):
-				collider.interact();
-
-func _physics_process(delta)->void:
+func physics_process(active_entity:ActiveEntity, detector:RayCast2D, tree:AnimationTree, animator_audio:AnimationPlayer)->Vector2:
 	var direction:Vector2 = Input.get_vector("left", "right", "up", "down");
-	velocity = direction * SPEED;
+	velocity = direction * active_entity.walk_speed;
 	if(direction):
-		detector.target_position = direction * DETECTOR_RANGE;
+		detector.target_position = direction * active_entity.detector_range;
 		
 		tree.get("parameters/playback").travel("walk");
 		tree.set("parameters/walk/blend_position", direction);
@@ -27,6 +13,11 @@ func _physics_process(delta)->void:
 	else:
 		tree.get("parameters/playback").travel("idle");
 		animator_audio.play("idle");
+	
+	if(Input.is_action_just_pressed("interact")):
+		if(detector.is_colliding()):
+			var collider = detector.get_collider().get_parent();
+			if(collider.has_method("interact")):
+				collider.interact();
 
-	move_and_slide();
-	position = round(position);
+	return(velocity);

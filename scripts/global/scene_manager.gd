@@ -1,4 +1,4 @@
-extends Node
+extends Node;
 
 var scene;
 var scene_instance;
@@ -24,10 +24,10 @@ func switchToScene(src:String, posX:float, posY:float)->void:
 	
 	newSceneProcess(scene_instance);
 
-func newSceneProcess(scene_instance)->void:
-	var scene_tools = scene_instance.get_node("scene_tools");
+func newSceneProcess(instance)->void:
+	var scene_tools = instance.get_node("scene_tools");
 	
-	var player = scene_instance.get_node("player");
+	var player = instance.get_node("player");
 	if(player):
 		player.position = player_pos;
 	

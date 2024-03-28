@@ -10,7 +10,7 @@ extends Node;
 @onready var hault_x:bool = false;
 @onready var hault_y:bool = false;
 
-func _process(delta)->void:
+func _process(_delta)->void:
 	if(DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN):
 		currentSize = get_window().size;
 		scale = currentSize/ratio;
