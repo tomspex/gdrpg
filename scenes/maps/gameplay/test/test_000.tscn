@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://enmphtw5bo3w"]
+[gd_scene load_steps=8 format=3 uid="uid://enmphtw5bo3w"]
 
-[ext_resource type="PackedScene" uid="uid://bqjcxw81o4oau" path="res://scenes/entities/active/player/player.tscn" id="1_1ymad"]
+[ext_resource type="PackedScene" uid="uid://bqjcxw81o4oau" path="res://scenes/entities/active/active_entity/active_entity.tscn" id="1_1ymad"]
 [ext_resource type="PackedScene" uid="uid://cbg440q63mrx6" path="res://scenes/entities/backend/scene_tools/scene_tools.tscn" id="1_foskj"]
 [ext_resource type="AudioStream" uid="uid://bnbuo1jigethb" path="res://audio/music/placeholder/hsh.mp3" id="1_jisvt"]
 [ext_resource type="PackedScene" uid="uid://cjhoexkbtb014" path="res://scenes/entities/still/door/door.tscn" id="2_dwb57"]
 [ext_resource type="TileSet" uid="uid://breyp6nb3g121" path="res://tilesets/maps/indoors/indoors.tres" id="2_gtl7s"]
+[ext_resource type="Script" path="res://scripts/entities/active/player/player_logic.gd" id="6_hdpts"]
+[ext_resource type="Resource" uid="uid://cfcu6j5bedwr4" path="res://resources/entities/active/player/player.tres" id="7_oaiw1"]
 
 [node name="test_000" type="Node2D"]
 
@@ -34,5 +36,7 @@ scene_target = "res://scenes/maps/gameplay/test/test_001.tscn"
 next_position = Vector2(-64, -16)
 
 [node name="player" parent="." instance=ExtResource("1_1ymad")]
+script = ExtResource("6_hdpts")
+active_entity = ExtResource("7_oaiw1")
 
 [node name="camera" type="Camera2D" parent="player"]

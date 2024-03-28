@@ -1,7 +1,5 @@
-[gd_scene load_steps=48 format=3 uid="uid://bqjcxw81o4oau"]
+[gd_scene load_steps=46 format=3 uid="uid://bqjcxw81o4oau"]
 
-[ext_resource type="Script" path="res://scripts/entities/active/active_entity/active_entity_controller.gd" id="1_l7vyi"]
-[ext_resource type="Resource" uid="uid://cfcu6j5bedwr4" path="res://resources/entities/active/player/player.tres" id="2_tstf8"]
 [ext_resource type="AudioStream" uid="uid://c2iagj2vjwp5c" path="res://audio/sfx/placeholder/step.wav" id="3_gawlq"]
 [ext_resource type="SpriteFrames" uid="uid://bqbejc4x83g87" path="res://sprite_frames/entities/active/placeholder/placeholder.tres" id="3_m0dm3"]
 
@@ -633,10 +631,8 @@ _data = {
 "walk": SubResource("Animation_jjkre")
 }
 
-[node name="entity" type="CharacterBody2D" groups=["player"]]
+[node name="active_entity" type="CharacterBody2D" groups=["player"]]
 visibility_layer = 2
-script = ExtResource("1_l7vyi")
-active_entity = ExtResource("2_tstf8")
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_m0dm3")

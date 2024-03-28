@@ -11,3 +11,14 @@ class_name ActiveEntity;
 @export var collision_transform:Vector2;
 @export var sprite_frames:SpriteFrames;
 @export var step_sound:AudioStream;
+
+func apply_resources(nodes:Dictionary):
+	if(nodes.sprites):
+		nodes.sprites.sprite_frames = sprite_frames;
+	
+	if(nodes.collision):
+		nodes.collision.shape = collision_shape;
+		nodes.collision.position = collision_transform;
+	
+	if(nodes.step_sound):
+		nodes.step_sound.stream = step_sound;

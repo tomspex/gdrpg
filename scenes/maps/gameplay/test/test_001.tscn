@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpql7f67mm1l6"]
+[gd_scene load_steps=10 format=3 uid="uid://dpql7f67mm1l6"]
 
 [ext_resource type="PackedScene" uid="uid://cbg440q63mrx6" path="res://scenes/entities/backend/scene_tools/scene_tools.tscn" id="1_4t8uo"]
 [ext_resource type="Shader" path="res://shaders/color/color_bgr.gdshader" id="1_8w1ty"]
 [ext_resource type="TileSet" uid="uid://breyp6nb3g121" path="res://tilesets/maps/indoors/indoors.tres" id="1_ds4k5"]
 [ext_resource type="AudioStream" uid="uid://c2epvsy3eahof" path="res://audio/music/placeholder/ms.mp3" id="1_slt7l"]
 [ext_resource type="PackedScene" uid="uid://cjhoexkbtb014" path="res://scenes/entities/still/door/door.tscn" id="2_782t7"]
-[ext_resource type="PackedScene" uid="uid://bqjcxw81o4oau" path="res://scenes/entities/active/player/player.tscn" id="3_rr5i8"]
+[ext_resource type="PackedScene" uid="uid://bqjcxw81o4oau" path="res://scenes/entities/active/active_entity/active_entity.tscn" id="3_rr5i8"]
+[ext_resource type="Script" path="res://scripts/entities/active/player/player_logic.gd" id="7_c53sf"]
+[ext_resource type="Resource" uid="uid://cfcu6j5bedwr4" path="res://resources/entities/active/player/player.tres" id="8_iw0pv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfgiw"]
 shader = ExtResource("1_8w1ty")
@@ -44,5 +46,11 @@ next_position = Vector2(160, -16)
 direction = 1
 
 [node name="player" parent="." instance=ExtResource("3_rr5i8")]
+position = Vector2(-64, -16)
+script = ExtResource("7_c53sf")
+active_entity = ExtResource("8_iw0pv")
 
 [node name="camera" type="Camera2D" parent="player"]
+
+[node name="test_enemy" parent="." instance=ExtResource("3_rr5i8")]
+position = Vector2(64, 0)

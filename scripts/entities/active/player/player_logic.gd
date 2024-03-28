@@ -1,6 +1,24 @@
 extends CharacterBody2D;
 
-func physics_process(active_entity:ActiveEntity, detector:RayCast2D, tree:AnimationTree, animator_audio:AnimationPlayer)->Vector2:
+@export var active_entity:ActiveEntity;
+
+@onready var sprites:AnimatedSprite2D = $sprites;
+@onready var collision:CollisionShape2D = $collision;
+@onready var tree:AnimationTree = $tree;
+@onready var step_sound:AudioStreamPlayer = $audio_holder/step;
+@onready var animator_audio:AnimationPlayer = $animator_audio;
+@onready var detector:RayCast2D = $interact_detector;
+
+func _ready():
+	var nodes:Dictionary = {
+		"sprites":sprites,
+		"collision":collision,
+		"step_sound":step_sound,
+		"detector":detector
+	};
+	active_entity.apply_resources(nodes);
+
+func _physics_process(_delta):
 	var direction:Vector2 = Input.get_vector("left", "right", "up", "down");
 	velocity = direction * active_entity.walk_speed;
 	if(direction):
@@ -19,5 +37,6 @@ func physics_process(active_entity:ActiveEntity, detector:RayCast2D, tree:Animat
 			var collider = detector.get_collider().get_parent();
 			if(collider.has_method("interact")):
 				collider.interact();
-
-	return(velocity);
+	
+	move_and_slide();
+	position = round(position);
