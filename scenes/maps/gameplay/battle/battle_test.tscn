@@ -37,7 +37,7 @@ stream = ExtResource("1_tt6qj")
 autoplay = true
 
 [node name="gui" type="CanvasLayer" parent="."]
-layer = 0
+layer = -1
 
 [node name="background" type="Control" parent="gui"]
 layout_mode = 3
@@ -78,13 +78,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
-[node name="enemy_holder" type="HBoxContainer" parent="gui"]
+[node name="opponents" type="HBoxContainer" parent="gui"]
 anchors_preset = -1
 anchor_left = 0.15
 anchor_top = 0.5
 anchor_right = 0.85
 anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="opponents" type="Node2D" parent="."]
+size_flags_horizontal = 4
+alignment = 1

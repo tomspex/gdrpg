@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ActiveEntity" load_steps=8 format=3 uid="uid://djkuj4o52n2ar"]
+[gd_resource type="Resource" script_class="ActiveEntity" load_steps=9 format=3 uid="uid://djkuj4o52n2ar"]
 
+[ext_resource type="Texture2D" uid="uid://crrb58xgpl4n7" path="res://sprites/entities/battle/test_opponent/test_opponent_battle.png" id="1_888my"]
 [ext_resource type="Script" path="res://classes/entities/active/active_entity/active_entity.gd" id="1_f38t4"]
 [ext_resource type="Script" path="res://scripts/entities/active/enemy/enemy_logic.gd" id="1_ggj3r"]
 [ext_resource type="Script" path="res://classes/entities/all/stats/entity_stats.gd" id="2_wkc4d"]
@@ -25,4 +26,5 @@ logic = ExtResource("1_ggj3r")
 collision_shape = SubResource("RectangleShape2D_fnq8c")
 collision_transform = Vector2(-0.5, 11)
 sprite_frames = ExtResource("3_pt78y")
+battle_sprite = ExtResource("1_888my")
 step_sound = ExtResource("4_6yt7d")

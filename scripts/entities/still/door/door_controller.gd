@@ -13,4 +13,4 @@ func _ready():
 func interact()->void:
 	dooropen.play();
 	print(name, ": Changing scene...");
-	SceneManager.switchToScene(scene_target, next_position.x, next_position.y);
+	SceneManager.switch_to_scene(scene_target, next_position.x, next_position.y);

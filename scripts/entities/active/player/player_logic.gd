@@ -48,4 +48,5 @@ func logic_process()->Vector2:
 			if(collider.has_method("interact")):
 				collider.interact();
 	
+	get_parent().position = round(get_parent().position);
 	return(direction * active_entity.walk_speed);

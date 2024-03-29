@@ -32,5 +32,5 @@ func logic_process()->Vector2:
 	var walk_to_player:Vector2 = dir_to_player * Vector2(active_entity.walk_speed, active_entity.walk_speed);
 	
 	if(pos.distance_to(player_pos) < active_entity.detector_range):
-		print("eh, close enough");
+		SceneManager.switch_to_battle(active_entity);
 	return(walk_to_player);

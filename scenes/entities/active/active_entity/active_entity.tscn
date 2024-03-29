@@ -642,6 +642,7 @@ script = ExtResource("1_fwmaw")
 script = ExtResource("2_024jg")
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = ExtResource("3_m0dm3")
 frame = 6
 
