@@ -39,6 +39,7 @@ func switch_to_battle(opponent:ActiveEntity)->void:
 	var scene_tools = get_tree().get_first_node_in_group("scene_tools");
 	
 	if(scene_tools):
+		get_tree().paused = true;
 		var animator = scene_tools.get_node("animator");
 		animator.play("wipe_out");
 		await(animator.animation_finished);
@@ -59,6 +60,7 @@ func new_battle_process(instance, opponent:ActiveEntity):
 	if(scene_tools):
 		var animator = scene_tools.get_node("animator");
 		animator.play("wipe_in");
+		get_tree().paused = false;
 	
 	var opponent_sprite = TextureRect.new();
 	opponent_sprite.texture = opponent.battle_sprite;

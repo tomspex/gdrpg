@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://classes/entities/active/active_entity/active_entity.gd" id="1_f38t4"]
 [ext_resource type="Script" path="res://scripts/entities/active/enemy/enemy_logic.gd" id="1_ggj3r"]
 [ext_resource type="Script" path="res://classes/entities/all/stats/entity_stats.gd" id="2_wkc4d"]
-[ext_resource type="SpriteFrames" uid="uid://bqbejc4x83g87" path="res://sprite_frames/entities/active/placeholder/placeholder.tres" id="3_pt78y"]
 [ext_resource type="AudioStream" uid="uid://c2iagj2vjwp5c" path="res://audio/sfx/placeholder/step.wav" id="4_6yt7d"]
+[ext_resource type="SpriteFrames" uid="uid://3cw4mkvujdiu" path="res://sprite_frames/entities/active/test_enemy/test_enemy.tres" id="4_b2dre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnq8c"]
 size = Vector2(3, 11)
@@ -25,6 +25,6 @@ detector_range = 32
 logic = ExtResource("1_ggj3r")
 collision_shape = SubResource("RectangleShape2D_fnq8c")
 collision_transform = Vector2(-0.5, 11)
-sprite_frames = ExtResource("3_pt78y")
+sprite_frames = ExtResource("4_b2dre")
 battle_sprite = ExtResource("1_888my")
 step_sound = ExtResource("4_6yt7d")

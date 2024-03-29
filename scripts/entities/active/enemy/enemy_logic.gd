@@ -31,6 +31,15 @@ func logic_process()->Vector2:
 	var dir_to_player:Vector2 = (player_pos-pos).normalized();
 	var walk_to_player:Vector2 = dir_to_player * Vector2(active_entity.walk_speed, active_entity.walk_speed);
 	
+	if(walk_to_player):
+		tree.get("parameters/playback").travel("walk");
+		tree.set("parameters/walk/blend_position", walk_to_player);
+		tree.set("parameters/idle/blend_position", walk_to_player);
+		animator_audio.play("walk");
+	else:
+		tree.get("parameters/playback").travel("idle");
+		animator_audio.play("idle");
+	
 	if(pos.distance_to(player_pos) < active_entity.detector_range):
 		SceneManager.switch_to_battle(active_entity);
 	return(walk_to_player);

@@ -100,6 +100,7 @@ shader_parameter/wipePercent = 0.0
 shader_parameter/toggleSide = false
 
 [node name="scene_tools" type="Node2D" groups=["scene_tools"]]
+process_mode = 3
 
 [node name="window_controller" type="Node" parent="."]
 script = ExtResource("1_appp8")
