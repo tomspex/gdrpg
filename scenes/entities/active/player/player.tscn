@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://wgw3kec478c0"]
+
+[ext_resource type="PackedScene" uid="uid://bqjcxw81o4oau" path="res://scenes/entities/active/active_entity/active_entity.tscn" id="1_2ck4g"]
+[ext_resource type="Resource" uid="uid://cfcu6j5bedwr4" path="res://resources/entities/active/player/player.tres" id="2_qp2vg"]
+
+[node name="player" groups=["player"] instance=ExtResource("1_2ck4g")]
+active_entity = ExtResource("2_qp2vg")
+
+[node name="interact_detector" type="RayCast2D" parent="." index="7"]
+target_position = Vector2(2.08165e-12, 32)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true

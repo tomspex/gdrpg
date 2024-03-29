@@ -1,5 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://bqjcxw81o4oau"]
+[gd_scene load_steps=48 format=3 uid="uid://bqjcxw81o4oau"]
 
+[ext_resource type="Script" path="res://scripts/entities/active/active_entity/active_entity.gd" id="1_fwmaw"]
+[ext_resource type="Script" path="res://scripts/entities/active/placeholder/placeholder.gd" id="2_024jg"]
 [ext_resource type="AudioStream" uid="uid://c2iagj2vjwp5c" path="res://audio/sfx/placeholder/step.wav" id="3_gawlq"]
 [ext_resource type="SpriteFrames" uid="uid://bqbejc4x83g87" path="res://sprite_frames/entities/active/placeholder/placeholder.tres" id="3_m0dm3"]
 
@@ -631,8 +633,13 @@ _data = {
 "walk": SubResource("Animation_jjkre")
 }
 
-[node name="active_entity" type="CharacterBody2D" groups=["player"]]
+[node name="active_entity" type="CharacterBody2D"]
 visibility_layer = 2
+collision_layer = 3
+script = ExtResource("1_fwmaw")
+
+[node name="logic" type="Node" parent="."]
+script = ExtResource("2_024jg")
 
 [node name="sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_m0dm3")
@@ -656,13 +663,6 @@ tree_root = SubResource("AnimationNodeStateMachine_maww6")
 anim_player = NodePath("../animations")
 parameters/idle/blend_position = Vector2(-0.0832, 0.262222)
 parameters/walk/blend_position = Vector2(-0.00959998, 0.582222)
-
-[node name="interact_detector" type="RayCast2D" parent="."]
-target_position = Vector2(2.08165e-12, 32)
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="animator_audio" type="AnimationPlayer" parent="."]
 libraries = {

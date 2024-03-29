@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="ActiveEntity" load_steps=6 format=3 uid="uid://djkuj4o52n2ar"]
+[gd_resource type="Resource" script_class="ActiveEntity" load_steps=8 format=3 uid="uid://djkuj4o52n2ar"]
 
 [ext_resource type="Script" path="res://classes/entities/active/active_entity/active_entity.gd" id="1_f38t4"]
 [ext_resource type="Script" path="res://scripts/entities/active/enemy/enemy_logic.gd" id="1_ggj3r"]
 [ext_resource type="Script" path="res://classes/entities/all/stats/entity_stats.gd" id="2_wkc4d"]
+[ext_resource type="SpriteFrames" uid="uid://bqbejc4x83g87" path="res://sprite_frames/entities/active/placeholder/placeholder.tres" id="3_pt78y"]
+[ext_resource type="AudioStream" uid="uid://c2iagj2vjwp5c" path="res://audio/sfx/placeholder/step.wav" id="4_6yt7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnq8c"]
 size = Vector2(3, 11)
@@ -17,8 +19,10 @@ courage = 10
 script = ExtResource("1_f38t4")
 display_name = "Test Enemy"
 stats = SubResource("Resource_iomn4")
-walk_speed = 75
+walk_speed = 50
 detector_range = 32
 logic = ExtResource("1_ggj3r")
 collision_shape = SubResource("RectangleShape2D_fnq8c")
 collision_transform = Vector2(-0.5, 11)
+sprite_frames = ExtResource("3_pt78y")
+step_sound = ExtResource("4_6yt7d")

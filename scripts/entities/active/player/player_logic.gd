@@ -1,26 +1,36 @@
-extends CharacterBody2D;
+extends Node;
 
-@export var active_entity:ActiveEntity;
+var sprites:AnimatedSprite2D;
+var collision:CollisionShape2D;
+var tree:AnimationTree;
+var step_sound:AudioStreamPlayer;
+var animator_audio:AnimationPlayer;
+var detector:RayCast2D;
 
-@onready var sprites:AnimatedSprite2D = $sprites;
-@onready var collision:CollisionShape2D = $collision;
-@onready var tree:AnimationTree = $tree;
-@onready var step_sound:AudioStreamPlayer = $audio_holder/step;
-@onready var animator_audio:AnimationPlayer = $animator_audio;
-@onready var detector:RayCast2D = $interact_detector;
+var active_entity:ActiveEntity;
 
-func _ready():
-	var nodes:Dictionary = {
+func assign_active_entity(entity:ActiveEntity):
+	sprites = $"../sprites";
+	collision = $"../collision";
+	tree = 	$"../tree";
+	step_sound = $"../audio_holder/step";
+	animator_audio = $"../animator_audio";
+	detector = $"../interact_detector";
+	
+	active_entity = entity;
+	var nodes = {
 		"sprites":sprites,
 		"collision":collision,
 		"step_sound":step_sound,
-		"detector":detector
+		"animator_audio":animator_audio,
+		"detector":detector,
+		"tree":tree
 	};
 	active_entity.apply_resources(nodes);
+	
 
-func _physics_process(_delta):
+func logic_process()->Vector2:
 	var direction:Vector2 = Input.get_vector("left", "right", "up", "down");
-	velocity = direction * active_entity.walk_speed;
 	if(direction):
 		detector.target_position = direction * active_entity.detector_range;
 		
@@ -38,5 +48,4 @@ func _physics_process(_delta):
 			if(collider.has_method("interact")):
 				collider.interact();
 	
-	move_and_slide();
-	position = round(position);
+	return(direction * active_entity.walk_speed);
