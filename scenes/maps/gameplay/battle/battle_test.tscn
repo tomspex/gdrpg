@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ewwgslk721lm"]
+[gd_scene load_steps=11 format=3 uid="uid://ewwgslk721lm"]
 
+[ext_resource type="PackedScene" uid="uid://di7nlmqoit2f1" path="res://scenes/entities/backend/battle_manager/battle_manager.tscn" id="1_3m7aa"]
 [ext_resource type="Shader" path="res://shaders/battle_backgrounds/wavy_0.gdshader" id="1_5rncn"]
 [ext_resource type="PackedScene" uid="uid://cbg440q63mrx6" path="res://scenes/entities/backend/scene_tools/scene_tools.tscn" id="1_r68cb"]
 [ext_resource type="AudioStream" uid="uid://co7g1bw8rth5c" path="res://audio/music/placeholder/baawo.mp3" id="1_tt6qj"]
@@ -28,18 +29,19 @@ shader_parameter/margin_value = 0.18
 
 [node name="battle" type="Node2D"]
 
+[node name="battle_manager" parent="." node_paths=PackedStringArray("entity_holder") instance=ExtResource("1_3m7aa")]
+entity_holder = NodePath("../entity_holder")
+
 [node name="scene_tools" parent="." instance=ExtResource("1_r68cb")]
 
-[node name="audio_holder" type="Node2D" parent="."]
+[node name="entity_holder" type="Node2D" parent="."]
 
-[node name="bg_music" type="AudioStreamPlayer" parent="audio_holder"]
-stream = ExtResource("1_tt6qj")
-autoplay = true
+[node name="camera" type="Camera2D" parent="."]
 
-[node name="gui" type="CanvasLayer" parent="."]
+[node name="bg" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="background" type="Control" parent="gui"]
+[node name="background" type="Control" parent="bg"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,7 +49,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="behind" type="TextureRect" parent="gui/background"]
+[node name="behind" type="TextureRect" parent="bg/background"]
 material = SubResource("ShaderMaterial_g8wud")
 layout_mode = 1
 anchors_preset = 15
@@ -57,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_rcv48")
 
-[node name="front" type="TextureRect" parent="gui/background"]
+[node name="front" type="TextureRect" parent="bg/background"]
 material = SubResource("ShaderMaterial_qolis")
 layout_mode = 1
 anchors_preset = 15
@@ -68,7 +70,7 @@ grow_vertical = 2
 texture = ExtResource("3_skt22")
 flip_h = true
 
-[node name="difficulty_margin" type="ColorRect" parent="gui/background"]
+[node name="difficulty_margin" type="ColorRect" parent="bg/background"]
 material = SubResource("ShaderMaterial_t7lq0")
 layout_mode = 1
 anchors_preset = 15
@@ -78,17 +80,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 
-[node name="opponents" type="HBoxContainer" parent="gui"]
-anchors_preset = -1
-anchor_left = 0.15
-anchor_top = 0.5
-anchor_right = 0.85
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-alignment = 1
+[node name="gui" type="CanvasLayer" parent="." groups=["battle_gui"]]
+
+[node name="audio_holder" type="Node2D" parent="."]
+
+[node name="bg_music" type="AudioStreamPlayer" parent="audio_holder"]
+stream = ExtResource("1_tt6qj")
+autoplay = true

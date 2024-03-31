@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ii55pr7tm2uy"]
+
+[node name="player_battle_gui" type="Panel"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -68.0
+offset_right = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="name" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_right = 96.0
+offset_bottom = 26.0
+
+[node name="health" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_top = 35.0
+offset_right = 97.0
+offset_bottom = 63.0
