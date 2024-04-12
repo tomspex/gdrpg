@@ -9,6 +9,6 @@ func initialize(entity:ActiveEntity):
 
 func battle_turn(allies:Array):
 	var rand_ally = RandomNumberGenerator.new();
-	var ally_index = rand_ally.randi_range(0, len(allies));
+	var ally_index = rand_ally.randi_range(0, len(allies)) - 1; # the subtraction of 1 is to account for how array indexes start at 0
+	print(active_entity.display_name, ": shazam!!");
 	allies[ally_index].hurt();
-	rand_ally.queue_free();
