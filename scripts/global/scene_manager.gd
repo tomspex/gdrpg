@@ -74,3 +74,4 @@ func new_battle_process(instance, entities:Array):
 		entity_instance.set_script(entities[i].battle_logic);
 		entity_list.add_child(entity_instance);
 		entity_instance.initialize(entities[i]);
+	battle_manager.initialize();

@@ -27,6 +27,10 @@ window/size/viewport_height=448
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
 
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+
 [input]
 
 up={
