@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://deelp3asqekct"]
 
-[ext_resource type="FontFile" uid="uid://b3r4xgba8g7ng" path="res://fonts/global/gui/applekid.ttf" id="1_nm0va"]
+[ext_resource type="FontFile" uid="uid://b3r4xgba8g7ng" path="res://fonts/applekid.ttf" id="1_nm0va"]
 
 [resource]
 GridContainer/constants/v_separation = 2

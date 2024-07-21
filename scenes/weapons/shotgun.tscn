@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=3 uid="uid://d08s74m134brx"]
+
+[ext_resource type="Script" path="res://scripts/weapons/shotgun.gd" id="1_a7y0s"]
+[ext_resource type="AudioStream" uid="uid://yushdokdaa0k" path="res://audio/sfx/weapons/shotgun_fire.mp3" id="2_vkxkx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5wqu"]
+shading_mode = 0
+albedo_color = Color(0.368627, 0.368627, 0.368627, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wh4ey"]
+material = SubResource("StandardMaterial3D_s5wqu")
+size = Vector3(0.2, 0.2, 1)
+
+[node name="Remington" type="Node3D"]
+script = ExtResource("1_a7y0s")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="TempCube" type="MeshInstance3D" parent="Model"]
+layers = 2
+mesh = SubResource("BoxMesh_wh4ey")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Raycasts" type="Node3D" parent="."]
+
+[node name="Raycast_0" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_1" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_2" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_3" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_4" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_5" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_6" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_7" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_8" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_9" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_10" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_11" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_12" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_13" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_14" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Raycast_15" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="SFX" type="Node3D" parent="."]
+
+[node name="Fire" type="AudioStreamPlayer3D" parent="SFX"]
+stream = ExtResource("2_vkxkx")
+max_distance = 100.0
+bus = &"SFX"

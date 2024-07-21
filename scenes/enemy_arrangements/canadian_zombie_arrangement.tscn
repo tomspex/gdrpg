@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://buw0rkby56xja"]
+
+[ext_resource type="PackedScene" uid="uid://kbqirl0mk342" path="res://scenes/entities/battle/canadian_zombie_battle.tscn" id="1_4epvv"]
+
+[node name="CanadianZombie" type="Node3D"]
+
+[node name="CanadianZombie" parent="." instance=ExtResource("1_4epvv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

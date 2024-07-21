@@ -1,0 +1,204 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbg440q63mrx6"]
+
+[ext_resource type="Script" path="res://scripts/backend/scene_manager.gd" id="1_o8pak"]
+[ext_resource type="Shader" path="res://shaders/transitions/wipe.gdshader" id="2_hshhp"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_yijia"]
+[ext_resource type="Theme" uid="uid://c2s5iejpiot4l" path="res://themes/menu_theme.tres" id="4_3fbpv"]
+
+[sub_resource type="Animation" id="Animation_4sy3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionLayer/Wipe:material:shader_parameter/wipePercent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionLayer/Wipe:material:shader_parameter/toggleSide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PauseLayer/Blur:material:shader_parameter/blur_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_4e4t8"]
+resource_name = "wipe_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionLayer/Wipe:material:shader_parameter/wipePercent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.35, 1),
+"update": 0,
+"values": [2.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionLayer/Wipe:material:shader_parameter/toggleSide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1xmhe"]
+resource_name = "wipe_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionLayer/Wipe:material:shader_parameter/wipePercent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(3.5, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TransitionLayer/Wipe:material:shader_parameter/toggleSide")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d42lj"]
+resource_name = "blur_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseLayer/Blur:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.196146, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PauseLayer/PauseMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.153893, 1),
+"update": 0,
+"values": [Vector2(-500, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qlis5"]
+_data = {
+"RESET": SubResource("Animation_4sy3s"),
+"blur_in": SubResource("Animation_d42lj"),
+"wipe_in": SubResource("Animation_4e4t8"),
+"wipe_out": SubResource("Animation_1xmhe")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jf6a3"]
+shader = ExtResource("2_hshhp")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/wipePercent = 0.0
+shader_parameter/toggleSide = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcrk2"]
+shader = ExtResource("3_yijia")
+shader_parameter/blur_type = 0
+shader_parameter/blur_amount = 16.0
+shader_parameter/blur_radius = 2.0
+shader_parameter/blur_direction = Vector2(1, 1)
+
+[node name="SceneManager" type="Node2D" groups=["scene_tools"]]
+process_mode = 3
+script = ExtResource("1_o8pak")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qlis5")
+}
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Wipe" type="ColorRect" parent="TransitionLayer"]
+material = SubResource("ShaderMaterial_jf6a3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 9
+visible = false
+
+[node name="Blur" type="ColorRect" parent="PauseLayer"]
+material = SubResource("ShaderMaterial_jcrk2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="Control" parent="PauseLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_right = 1548.0
+offset_bottom = 1792.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_3fbpv")
+
+[node name="Paused" type="RichTextLabel" parent="PauseLayer/PauseMenu"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 31.0
+offset_right = 553.0
+offset_bottom = 218.0
+text = "PAUSED"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animator_animation_finished"]

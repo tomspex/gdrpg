@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://vmc3l1napsoh"]
+
+[ext_resource type="Script" path="res://scripts/entities/player_battle.gd" id="1_f8nok"]
+[ext_resource type="Theme" uid="uid://g226tlvy6fsj" path="res://themes/hud_theme.tres" id="2_lr4va"]
+[ext_resource type="Texture2D" uid="uid://cwnk2qbjauw77" path="res://sprites/gui/bullet_icon.png" id="3_qt2nq"]
+[ext_resource type="Texture2D" uid="uid://cdublrmltwucu" path="res://sprites/gui/heart_icon.png" id="4_42prh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c7u0t"]
+
+[node name="PlayerFPS" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_f8nok")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_c7u0t")
+
+[node name="WeaponCanvas" type="CanvasLayer" parent="."]
+
+[node name="HUDCanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="HUD" type="Control" parent="HUDCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lr4va")
+
+[node name="HUDTint" type="ColorRect" parent="HUDCanvas/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -119.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.32549)
+
+[node name="WeaponIcon" type="TextureRect" parent="HUDCanvas/HUD"]
+offset_left = 237.0
+offset_top = 829.0
+offset_right = 277.0
+offset_bottom = 869.0
+
+[node name="Ammo" type="RichTextLabel" parent="HUDCanvas/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = -114.0
+offset_right = 149.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "64"
+
+[node name="AmmoIcon" type="TextureRect" parent="HUDCanvas/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -99.0
+offset_right = 192.0
+offset_bottom = -32.0
+grow_vertical = 0
+texture = ExtResource("3_qt2nq")
+
+[node name="Health" type="RichTextLabel" parent="HUDCanvas/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 1.0
+anchor_right = 0.187
+anchor_bottom = 1.0
+offset_left = 21.512
+offset_top = -114.0
+offset_right = 118.512
+offset_bottom = -9.0
+grow_vertical = 0
+text = "64"
+
+[node name="HealthIcon" type="TextureRect" parent="HUDCanvas/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.187
+anchor_top = 1.0
+anchor_right = 0.187
+anchor_bottom = 1.0
+offset_left = 110.512
+offset_top = -99.0
+offset_right = 173.512
+offset_bottom = -32.0
+grow_vertical = 0
+texture = ExtResource("4_42prh")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+fov = 90.0
+size = 5.0

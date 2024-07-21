@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://phttp7se1ip6"]
+
+[ext_resource type="Script" path="res://scripts/weapons/pistol.gd" id="1_2jcs3"]
+[ext_resource type="AudioStream" uid="uid://ca7r6xwahexj7" path="res://audio/sfx/weapons/pistol_fire.mp3" id="2_rhnyc"]
+[ext_resource type="Texture2D" uid="uid://duur4sa44qx4q" path="res://sprites/weapons/pistol.png" id="3_v1qd4"]
+
+[sub_resource type="Animation" id="Animation_sgbcf"]
+resource_name = "fire"
+length = 0.6
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6jax"]
+_data = {
+"fire": SubResource("Animation_sgbcf")
+}
+
+[node name="Pistol" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2jcs3")
+
+[node name="Raycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0.225815, -0.419286)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 3
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_k6jax")
+}
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -896.0
+offset_top = -896.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_v1qd4")
+expand_mode = 2
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Fire" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_rhnyc")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bamhmwdcmuab3"]
+
+[ext_resource type="Texture2D" uid="uid://6do3oifcdo74" path="res://textures/misc/bullet_hole_decal.png" id="1_ygp0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vemhl"]
+transparency = 1
+albedo_texture = ExtResource("1_ygp0b")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5wmjx"]
+material = SubResource("StandardMaterial3D_vemhl")
+size = Vector2(0.2, 0.2)
+
+[node name="BulletHoleDecal" type="Node3D"]
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_5wmjx")
