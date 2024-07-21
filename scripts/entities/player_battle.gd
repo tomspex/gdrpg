@@ -142,7 +142,7 @@ func _physics_process(delta):
 			rotation.y += head.rotation.y
 			head.rotation.y = 0
 	
-	head.position.y = lerp(head.position.y, 1.5 - float(state == SLIDE), 0.1)
+	head.position.y = lerp(head.position.y, .5 - float(state == SLIDE), 0.1)
 	
 	var camera_dir = Input.get_vector("turn_left", "turn_right", "turn_up", "turn_down")
 	camera.rotate_x(-camera_dir.y * KEY_SENSITIVITY)
@@ -161,7 +161,7 @@ func _physics_process(delta):
 		weapon_instance.fire()
 	
 	if weapon_instance.has_method("aim_from"):
-		weapon_instance.aim_from(head.global_position)
+		weapon_instance.aim_from(camera.global_position)
 	
 	#interact
 	if Input.is_action_just_pressed("interact"):

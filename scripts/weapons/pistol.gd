@@ -1,4 +1,4 @@
-extends Control
+extends Node3D
 
 #weapon stats
 const DAMAGE = 20

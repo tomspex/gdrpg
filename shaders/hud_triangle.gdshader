@@ -1,5 +1,6 @@
 shader_type canvas_item;
 
+
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
 
 // Xor's gausian blur function 
@@ -112,6 +113,7 @@ vec4 texture_nodevgaussian_multipass(sampler2D tex, vec2 uv, vec2 pixel_size, fl
 
 //  -- EXAMPLE CODE -- //
 uniform float fade_percentage = 0.0;
+uniform bool flip = false;
 uniform int blur_type = 0;
 uniform float blur_amount = 16;
 uniform float blur_radius = 1;
@@ -143,5 +145,11 @@ void fragment(){
 	{
 		COLOR =  texture(SCREEN_TEXTURE, uv);
 	}
+	
+	float flip_negative = float(flip) * 2.0 - 1.0;
+	if(1.0*float(flip) - UV.x * flip_negative > UV.y) {
+		COLOR.a = 0.;
+	}
+	
 	COLOR.rgb -= fade_percentage;
 }
